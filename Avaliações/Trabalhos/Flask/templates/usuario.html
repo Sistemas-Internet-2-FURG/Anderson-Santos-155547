@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header class="barra_navegacao">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('Exibir_Todos_Livros') }}">Livros</a>
+        {% if session['user'] %}
+            <a class="active" href="{{ url_for('usuario') }}">Usuário</a>
+            <a href="{{ url_for('deslogar') }}">Deslogar</a>
+        {% else %}
+            <a href="{{ url_for('logar') }}">Login</a>
+            <a href="{{ url_for('cadastrar_usuario') }}">Cadastrar Usuário</a>
+        {% endif %}
+        <a href="{{ url_for('cadastrar_livro') }}">Cadastrar Livro</a>
+        <a href="{{ url_for('verificarDatabase') }}">Database</a>
+    </header>
+
+    <center>
+    <main>
+        <h1>Bem-vindo {{ user }}!</h1>
+        <h2>Seus livros</h2>
+        <table>
+            {% for titulo_livro, id_livro in livros_dict.items() %}
+            <tr>
+                <td>
+                    <a href="{{ url_for('Exibir_Livro', id=id_livro) }}">{{ titulo_livro }}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+		<p>Gerencie sua conta e livros.</p>
+        <a href="{{ url_for('deletar_conta') }}" style="color: red;">Excluir Conta</a>
+    </main>
+</center>
+    
+</body>
+</html>

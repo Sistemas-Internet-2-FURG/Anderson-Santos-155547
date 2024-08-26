@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Livros</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header class="barra_navegacao">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a class="active" href="{{ url_for('Exibir_Todos_Livros') }}">Livros</a>
+        {% if session['user'] %}
+            <a href="{{ url_for('usuario') }}">Usuário</a>
+            <a href="{{ url_for('deslogar') }}">Deslogar</a>
+        {% else %}
+            <a href="{{ url_for('logar') }}">Login</a>
+            <a href="{{ url_for('cadastrar_usuario') }}">Cadastrar Usuário</a>
+        {% endif %}
+        <a href="{{ url_for('cadastrar_livro') }}">Cadastrar Livro</a>
+        <a href="{{ url_for('verificarDatabase') }}">Database</a>
+    </header>
+
+    <center>
+    <main>
+        <h1>Lista de Livros</h1>
+        <ul>
+            {% for entry in entries %}
+                <li>
+                    <a href="{{ url_for('Exibir_Livro', id=entry['ID']) }}">{{ entry['Title'] }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+    </center>
+    
+</body>
+</html>

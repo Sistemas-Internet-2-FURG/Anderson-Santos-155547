@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ entry['title'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header class="barra_navegacao">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('Exibir_Todos_Livros') }}">Livros</a>
+        {% if session['user'] %}
+            <a href="{{ url_for('usuario') }}">Usuário</a>
+            <a href="{{ url_for('deslogar') }}">Deslogar</a>
+        {% else %}
+            <a href="{{ url_for('logar') }}">Login</a>
+            <a href="{{ url_for('cadastrar_usuario') }}">Cadastrar Usuário</a>
+        {% endif %}
+        <a href="{{ url_for('cadastrar_livro') }}">Cadastrar Livro</a>
+        <a href="{{ url_for('verificarDatabase') }}">Database</a>
+    </header>
+
+    <main>
+
+        <center>
+        <table>
+        <tr>
+            <th>
+                <h1>{{ entry['title'] }}</h1>
+
+        
+                {% if user %}
+                    <p>Bem-vindo, {{ user }}!</p>
+                    <br>
+                    {{ mensagem }}
+                    <br>
+                    {% if not possui_na_biblioteca %}
+                    <form action="{{ url_for('Exibir_Livro', id=id) }}" method="POST">
+                        <button type="submit">Adicionar à Estante</button>
+                    </form>
+                    {% else %}
+                    <form action="{{ url_for('Exibir_Livro', id=id) }}" method="POST">
+                        <button type="submit">Remover da Estante</button>
+                    </form>
+                    {% endif %}
+                {% else %}
+                    <p>Por favor, faça login para adicionar à sua coleção.</p>
+                    <br>
+                {% endif %}
+            </th>
+            <th>
+                <img src="{{ entry[3] }}" alt="{{ entry['title'] }}" style="max-width: 250px;">
+            </th>
+        </tr>
+
+        </table>
+        </center>
+        <br>
+        <a href="{{ url_for('deletar_livro', id=id) }}">Remover livro</a>
+        
+    </main>
+    
+</body>
+</html>

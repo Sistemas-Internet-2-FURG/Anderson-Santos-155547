@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Não Encontrada</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <center>
+    <h1>404</h1>
+    <p>Página não encontrada!</p>
+    <p>Desculpe, mas a página que você está procurando não existe.</p>
+    <a href="{{ url_for('index') }}">Voltar para a página inicial</a>
+</center>
+</body>
+</html>

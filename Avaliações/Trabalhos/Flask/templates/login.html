@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header class="barra_navegacao">
+		<a href="{{ url_for('index') }}">Home</a>
+		<a href="{{ url_for('Exibir_Todos_Livros') }}">Livros</a>
+	{% if session['user'] %}
+		<a href="{{ url_for('usuario') }}">Usuário</a>
+		<a href="{{ url_for('deslogar') }}">Deslogar</a>
+	{% else %}
+		<a class="active" href="{{ url_for('logar') }}">Login</a>
+		<a href="{{ url_for('cadastrar_usuario') }}">Cadastrar Usuário</a>
+	{% endif %}
+		<a href="{{ url_for('cadastrar_livro') }}">Cadastrar Livro</a>
+		<a href="{{ url_for('verificarDatabase') }}">Database</a>
+    </header>
+        <center>
+            <h2>Entrar</h2>
+            <form action="{{logar}}" method="POST">
+                <br>
+                <input type="text" name="login_usuario" placeholder="usuário">
+                <br>
+                <!-- <label>Senha</label> -->
+                <input type="text" name="login_senha" placeholder="senha">
+                <br>
+                <center>
+            <button>Entrar</button>
+        </center>
+            </form>
+        </center>
+    </div>
+</body>
+</html>

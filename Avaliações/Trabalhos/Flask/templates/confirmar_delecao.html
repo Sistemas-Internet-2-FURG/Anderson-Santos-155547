@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Exclusão</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header class="barra_navegacao">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('Exibir_Todos_Livros') }}">Livros</a>
+        {% if session['user'] %}
+            <a href="{{ url_for('usuario') }}">Usuário</a>
+            <a href="{{ url_for('deslogar') }}">Deslogar</a>
+        {% else %}
+            <a href="{{ url_for('logar') }}">Login</a>
+            <a href="{{ url_for('cadastrar_usuario') }}">Cadastrar Usuário</a>
+        {% endif %}
+        <a href="{{ url_for('cadastrar_livro') }}">Cadastrar Livro</a>
+        <a href="{{ url_for('verificarDatabase') }}">Database</a>
+    </header>
+
+    <main>
+        <h1>Confirmar Exclusão da Conta</h1>
+        <p>Você tem certeza de que deseja excluir sua conta? Esta ação é irreversível.</p>
+        <form action="{{ url_for('deletar_conta') }}" method="POST">
+            <button type="submit" name="confirmar">Confirmar Exclusão</button>
+            <button type="submit" name="cancelar">Cancelar</button>
+        </form>
+    </main>
+    
+</body>
+</html>

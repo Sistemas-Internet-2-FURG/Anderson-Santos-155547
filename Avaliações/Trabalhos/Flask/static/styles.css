@@ -1,0 +1,113 @@
+/* styles.css */
+
+/* Reset básico */
+body, h1, h2, p, ul, li, a, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Barra de navegação */
+.barra_navegacao {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.barra_navegacao a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.barra_navegacao a.active, .barra_navegacao a:hover {
+    text-decoration: underline;
+}
+/* 
+.active{
+    background-color: #8b8b8b;
+} */
+
+
+
+/* Títulos */
+h1, h2 {
+    color: #333;
+}
+
+/* Tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    width: 500px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Listas */
+ul {
+    list-style-type: none;
+}
+
+li {
+    padding: 8px;
+}
+
+/* Formulários */
+form {
+    /* margin: 20px 0; */
+
+    width: 250px; /* Define a largura fixa do formulário */
+    margin: 0 auto; /* Centraliza o formulário horizontalmente */
+    padding: 15px; /* Adiciona espaço interno ao formulário */
+    background-color: #fff; /* Define um fundo branco para o formulário */
+    border-radius: 8px; /* Adiciona cantos arredondados */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adiciona uma leve sombra ao redor do formulário */
+
+
+}
+
+input, label {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* Imagens */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+

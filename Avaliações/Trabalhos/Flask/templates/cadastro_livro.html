@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Livro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header class="barra_navegacao">
+		<a href="{{ url_for('index') }}">Home</a>
+		<a href="{{ url_for('Exibir_Todos_Livros') }}">Livros</a>
+	{% if session['user'] %}
+		<a href="{{ url_for('usuario') }}">Usuário</a>
+		<a href="{{ url_for('deslogar') }}">Deslogar</a>
+	{% else %}
+		<a href="{{ url_for('logar') }}">Login</a>
+		<a href="{{ url_for('cadastrar_usuario') }}">Cadastrar Usuário</a>
+	{% endif %}
+		<a class="active" href="{{ url_for('cadastrar_livro') }}">Cadastrar Livro</a>
+		<a href="{{ url_for('verificarDatabase') }}">Database</a>
+    </header>
+
+    <div>
+        {% if mensagem %}
+            <div id="mensagem_cadastro" style="color: red;">
+                {{ mensagem }}
+            </div>
+        {% endif %}
+    </div>
+    
+    <center>
+        <h2>Cadastrar Livro</h2>
+    </center>
+
+    <div>
+    <form action="{{cadastrar}}" method="POST">
+        <center>
+        <br>
+        <label>Título: </label>
+        <input type="text" name="novo_titulo">
+        <br>
+        <label>Autor: </label>
+        <input type="text" name="novo_autor">
+        <br>
+        <label>Capa: </label>
+        <input type="text" name="nova_capa">
+        <br>
+    </center>
+        <center>
+        <button type="submit">Cadastrar</button>
+        </center>
+    </form>
+    </div>
+
+
+
+</body>
+</html>

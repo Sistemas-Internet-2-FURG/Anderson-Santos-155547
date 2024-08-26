@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header class="barra_navegacao">
+        <a class="active" href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('Exibir_Todos_Livros') }}">Livros</a>
+        {% if session['user'] %}
+            <a href="{{ url_for('usuario') }}">Usuário</a>
+            <a href="{{ url_for('deslogar') }}">Deslogar</a>
+        {% else %}
+            <a href="{{ url_for('logar') }}">Login</a>
+            <a href="{{ url_for('cadastrar_usuario') }}">Cadastrar Usuário</a>
+        {% endif %}
+        <a href="{{ url_for('cadastrar_livro') }}">Cadastrar Livro</a>
+        <a href="{{ url_for('verificarDatabase') }}">Database</a>
+    </header>
+
+    <main>
+        <center>
+        {% if session['user']  %}
+        <h1>Bem-vindo ao Gerenciador de Estantes {{session['user']}}!</h1>
+        {% else %}
+        <h1>Bem-vindo ao Gerenciador de Estantes! <a href="{{url_for('cadastrar_usuario')}}">Cadastre-se</a> ou <a href="{{url_for('logar')}}">entre</a> para continuar.</h1>
+        {% endif %}
+
+        </center>
