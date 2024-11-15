@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="header">
+        Gerenciador de livros
+
+    </div>
+
+    
+    <section>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+
+                {% if session['user'] %}
+                <li><a href="{{ url_for('deslogar') }}">Sair</a></li>
+
+                {% else %}
+                <li><a href="{{ url_for('logar') }}">Entrar</a></li>
+                <li><a href="{{ url_for('criar_usuario') }}">Criar Conta</a></li>
+                {% endif %}
+                <li><a href="{{ url_for('usuario') }}">Usuário</a></li>
+
+                <li><a href="{{ url_for('sobre') }}">Sobre</a></li>
+            </ul>
+        </nav>
+    
+
+        <div class="corpo">
+            {% if session['user'] %}
+                <h1>Olá, {{ session['user'] }}</h1>
+            {% endif %}
+            <h2>Lista de livros</h2>
+            <ul>
+                {% if session['user'] %}
+                    {% for livro in livros %}
+                    <li>{{ livro.titulo }} - {{ livro.autor }} - {{ livro.genero }}</li>
+                    {% endfor %}
+                {% else %}
+                    <h2>Entre para visualizar os arquivos</h2>
+                {% endif %}
+            </div>
+        
+
+    </section>
+
+    <footer>
+        Rodapé
+    </footer>
+    </ul>
+</body>
+</html>

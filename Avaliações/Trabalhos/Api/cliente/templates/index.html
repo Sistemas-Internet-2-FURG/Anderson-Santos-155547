@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Livros</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="header">
+        Gerenciador de livros
+
+    </div>
+
+    
+    <section>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+
+                {% if session['user'] %}
+                <li><a href="{{ url_for('deslogar') }}">Sair</a></li>
+
+                {% else %}
+                <li><a href="{{ url_for('logar') }}">Entrar</a></li>
+                <li><a href="{{ url_for('criar_usuario') }}">Criar Conta</a></li>
+                {% endif %}
+                <li><a href="{{ url_for('usuario') }}">Usuário</a></li>
+
+                <li><a href="{{ url_for('sobre') }}">Sobre</a></li>
+            </ul>
+        </nav>
+    
+
+        <div class="corpo">
+        <h1>Teste de API - Cliente</h1>
+
+        {% if session['user'] %}
+            <h1>Olá, {{ session['user'] }}</h1>
+        {% else %}
+            <h2>Entre para visualizar os arquivos</h2>
+        {% endif %}
+        <br>
+        <p>
+            Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto 
+        </p>
+        </div>
+        
+
+    </section>
+
+    <footer>
+        Rodapé
+    </footer>
+
+</body>
+</html>
